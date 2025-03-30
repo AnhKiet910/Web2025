@@ -14,13 +14,31 @@
     <title>VKU 2025</title>
     <style>
         body {
+            padding-top: 60px;
             font-family: 'Roboto', sans-serif;
             margin: 0;
-            padding: 0;
+            
+        }
+        .navbar {
+    background: rgba(0, 0, 0, 0.8);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: all 0.3s ease-in-out;
+}
+
+.navbar.navbar-shrink {
+    background: rgba(0, 0, 0, 0.95); /* Làm navbar tối hơn khi cuộn xuống */
+    padding: 10px 0;
+}
+        .navbar-brand img {
+            height: 40px;
         }
         .section {
             text-align: center;
-            padding: 50px 20px;
+            padding: 75px 20px;
         }
         .section-title {
             font-size: 2.5rem;
@@ -35,10 +53,41 @@
             font-size: 1.25rem;
             max-width: 800px;
             margin: 0 auto 30px;
+
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            border-radius: 8px;
         }
     </style>
 </head>
 <body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#introduction">
+                <img src="https://vku.udn.vn/wp-content/uploads/2023/06/logo_intro.svg" alt="VKU Logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#introduction">Giới thiệu</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#extracurricular">Hoạt động</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#facilities">Cơ sở vật chất</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#virtual-tour">Virtual Tour 360°</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#academics">Hoạt động học thuật</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#career">Cơ hội nghề nghiệp</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#virtual-tour">Câu lạc bộ - Đội - Nhóm</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#youth-union">Đoàn trường</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
     <div id="fullpage">
         <!-- Phần 1: Giới thiệu tổng quát về trường -->
         <div class="section" data-anchor="introduction">
@@ -217,6 +266,23 @@ illie                    </button>
             scrollingSpeed: 1000,
             anchors: ['introduction', 'extracurricular', 'facilities', 'virtual-tour', 'academics', 'career', 'clubs', 'youth-union']
         });
+       
     </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let navLinks = document.querySelectorAll(".nav-link");
+            let navbarToggler = document.querySelector(".navbar-toggler");
+            let navbarCollapse = document.querySelector(".navbar-collapse");
+    
+            navLinks.forEach(function (link) {
+                link.addEventListener("click", function () {
+                    if (window.innerWidth <= 991) { // Chỉ áp dụng khi menu đang mở (trên mobile/tablet)
+                        navbarToggler.click();
+                    }
+                });
+            });
+        });
+    </script>
+    
 </body>
 </html>
